@@ -39,8 +39,9 @@ class Memory
 public:
 	Memory() noexcept;
 
-	uintptr_t present;
-	uintptr_t reset;
+	/*uintptr_t present;
+	uintptr_t reset;*/
+	void* device;
 
 	ClientMode *clientMode;
 	Input *input;
