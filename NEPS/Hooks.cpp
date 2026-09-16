@@ -704,11 +704,6 @@ Hooks::Hooks(HMODULE moduleHandle) noexcept
 
 void Hooks::install() noexcept
 {
-	/*originalPresent = **reinterpret_cast<decltype(originalPresent) **>(memory->present);
-	**reinterpret_cast<decltype(present) ***>(memory->present) = present;
-	originalReset = **reinterpret_cast<decltype(originalReset) **>(memory->reset);
-	**reinterpret_cast<decltype(reset) ***>(memory->reset) = reset;*/
-
 	if constexpr (std::is_same_v<HookType, MinHook>)
 		MH_Initialize();
 
@@ -829,10 +824,6 @@ void Hooks::uninstall() noexcept
 	netvars->restore();
 
 	Glow::clearCustomObjects();
-
-	/*SetWindowLongPtrW(window, GWLP_WNDPROC, LONG_PTR(originalWndProc));
-	**reinterpret_cast<void ***>(memory->present) = originalPresent;
-	**reinterpret_cast<void ***>(memory->reset) = originalReset;*/
 
 	SetWindowLongPtrW(window, GWLP_WNDPROC, LONG_PTR(originalWndProc));
 
